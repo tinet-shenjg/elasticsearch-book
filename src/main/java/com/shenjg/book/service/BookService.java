@@ -2,7 +2,6 @@ package com.shenjg.book.service;
 
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
-import org.elasticsearch.client.ElasticsearchClient;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.text.Text;
@@ -50,26 +49,31 @@ public class BookService {
                                                 int pageNum,
                                                 int pageSize) {
 
-        SearchRequest searchRequest = new SearchRequest(indexName);
-        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
-
         MultiMatchQueryBuilder multiMatchQuery = QueryBuilders
                 .multiMatchQuery(keyword, fieldNames)
                 .operator(Operator.AND);
+
         HighlightBuilder highlightBuilder = new HighlightBuilder();
         HighlightBuilder.Field highlightTitle =
                 new HighlightBuilder.Field("title");
-        highlightBuilder.field(highlightTitle);
         HighlightBuilder.Field highlightFilecontent = new HighlightBuilder.Field("content");
+
+        highlightBuilder.field(highlightTitle);
         highlightBuilder.field(highlightFilecontent);
 
         highlightBuilder
                 .preTags("<span style=color:red>")
                 .postTags("</span>");
+
+        // 搜索构建器
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
         searchSourceBuilder.highlighter(highlightBuilder);
         searchSourceBuilder.query(multiMatchQuery);
         searchSourceBuilder.from((pageNum - 1) * pageSize);
         searchSourceBuilder.size(pageSize);
+
+        // 构造针对索引的新搜索请求
+        SearchRequest searchRequest = new SearchRequest(indexName);
         searchRequest.source(searchSourceBuilder);
         List<Map<String, Object>> resultList = new ArrayList<>();
 
