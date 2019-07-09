@@ -55,7 +55,7 @@ public class BookService {
 
         HighlightBuilder highlightBuilder = new HighlightBuilder();
         HighlightBuilder.Field highlightTitle =
-                new HighlightBuilder.Field("title");
+                new HighlightBuilder.Field("user");
         HighlightBuilder.Field highlightFilecontent = new HighlightBuilder.Field("content");
 
         highlightBuilder.field(highlightTitle);
