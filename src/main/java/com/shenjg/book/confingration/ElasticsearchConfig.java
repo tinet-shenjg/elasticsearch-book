@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * ElasticsearchConfig
+ * Elasticsearch配置类
  *
  * @author shenjg
  * @date 2019/07/09
