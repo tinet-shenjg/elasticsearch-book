@@ -23,9 +23,14 @@ public class Book {
     private Integer id;
 
     /**
+     * 图书名称
+     */
+    private String name;
+
+    /**
      * 种类Id
      */
-    private Integer catagoryId;
+    private Integer categoryId;
 
     /**
      * 内容

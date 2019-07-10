@@ -56,10 +56,10 @@ public class BookService {
         HighlightBuilder highlightBuilder = new HighlightBuilder();
         HighlightBuilder.Field highlightTitle =
                 new HighlightBuilder.Field("user");
-        HighlightBuilder.Field highlightFilecontent = new HighlightBuilder.Field("content");
+        HighlightBuilder.Field highlightFileContent = new HighlightBuilder.Field("content");
 
         highlightBuilder.field(highlightTitle);
-        highlightBuilder.field(highlightFilecontent);
+        highlightBuilder.field(highlightFileContent);
 
         highlightBuilder
                 .preTags("<span style=color:red>")
