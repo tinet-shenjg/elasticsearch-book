@@ -96,10 +96,10 @@ public class BookService {
                     }
                     sourceAsMap.put("title", hTitleText);
                 }
-                HighlightField hFilecontent = highlightFields.get("filecontent");
-                if (hFilecontent != null) {
+                HighlightField filecontent = highlightFields.get("filecontent");
+                if (filecontent != null) {
                     String hFilecontentText = "";
-                    Text[] fragments = hFilecontent.fragments();
+                    Text[] fragments = filecontent.fragments();
                     for (Text text : fragments) {
                         hFilecontentText += text;
                     }
