@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: elasticsearch-book
+  thymeleaf:
+    prefix: classpath:/templates/
   # Elasticsearch客户端配置
   elasticsearch:
     host: localhost

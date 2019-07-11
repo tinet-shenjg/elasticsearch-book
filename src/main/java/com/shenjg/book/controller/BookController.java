@@ -24,13 +24,14 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @GetMapping
+    @GetMapping("/search")
     public ResponseModel getBook(String keyword) {
 
+        // 构建查询字段
         String[] fieldNames = {"content","name"};
+        //TODO 查询ES数据
         List<Map<String, Object>> list = bookService
                 .searchDocs("books", keyword, fieldNames,1,10);
-        //TODO 查询ES数据
         return new ResponseModel(list,HttpStatus.OK);
     }
 }

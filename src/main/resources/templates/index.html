@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图书检索系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        .x {
+            display: inline-block;
+            margin-top: 200px;
+            margin-left: 300px;
+            position: relative;
+        }
+
+        .k {
+            width: 536px;
+            height: 38px;
+            border: 1px solid #cccccc;
+            float: left;
+            box-sizing: border-box;
+        }
+
+        .n {
+            width: 102px;
+            height: 38px;
+            line-height: 40px;
+            float: left;
+            background-color: #38f;
+            font-size: 16px;
+            /*鼠标悬停按钮上方，光标成手指样式*/
+            cursor: pointer;
+        }
+
+        .t {
+            z-index: 1;
+            position: absolute;
+            right: 113px;
+            top: 50%;
+            margin-top: -8px;
+            height: 16px;
+            width: 18px;
+            cursor: pointer;
+        }
+
+        html, body {
+
+            width: 100%;
+
+            height: 100%;
+
+        }
+
+        .mui-content {
+
+            background: url("/image/background.jpg") bottom center no-repeat #efeff4;
+
+            background-size: 100% 100%;
+
+            width: 100%;
+
+            height: 100%;
+
+        }
+    </style>
+</head>
+<body class="mui-content">
+<span class="x">
+<h1 align="center">搜搜一下 你就知道了</h1>
+<div class="searchbox">
+    <form action="/book/search" method="GET">
+        <input class="k" type="text" name="keyword">
+        <input class="n" type="submit" value="搜索一下">
+    </form>
+</div>
+</span>
+</body>
+<script type="javascript">
+
+</script>
+</html>
