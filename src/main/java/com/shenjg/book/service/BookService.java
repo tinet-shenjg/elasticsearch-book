@@ -55,7 +55,7 @@ public class BookService {
 
         HighlightBuilder highlightBuilder = new HighlightBuilder();
         HighlightBuilder.Field highlightTitle =
-                new HighlightBuilder.Field("user");
+                new HighlightBuilder.Field("name");
         HighlightBuilder.Field highlightFileContent = new HighlightBuilder.Field("content");
 
         highlightBuilder.field(highlightTitle);
@@ -86,24 +86,24 @@ public class BookService {
 
                 Map<String, Object> sourceAsMap = hit.getSourceAsMap();
                 Map<String, HighlightField> highlightFields = hit.getHighlightFields();
-                HighlightField hTitle = highlightFields.get("title");
+                HighlightField highlightContent = highlightFields.get("content");
 
-                if (hTitle != null) {
-                    String hTitleText = "";
-                    Text[] fragments = hTitle.fragments();
+                if (highlightContent != null) {
+                    String hContentText = "";
+                    Text[] fragments = highlightContent.fragments();
                     for (Text text : fragments) {
-                        hTitleText += text;
+                        hContentText += text;
                     }
-                    sourceAsMap.put("title", hTitleText);
+                    sourceAsMap.put("content", hContentText);
                 }
-                HighlightField filecontent = highlightFields.get("filecontent");
-                if (filecontent != null) {
-                    String hFilecontentText = "";
-                    Text[] fragments = filecontent.fragments();
+                HighlightField highlightName = highlightFields.get("name");
+                if (highlightName != null) {
+                    String highlightNameText = "";
+                    Text[] fragments = highlightName.fragments();
                     for (Text text : fragments) {
-                        hFilecontentText += text;
+                        highlightNameText += text;
                     }
-                    sourceAsMap.put("filecontent", hFilecontentText);
+                    sourceAsMap.put("name", highlightNameText);
                 }
                 resultList.add(sourceAsMap);
             }
@@ -111,7 +111,6 @@ public class BookService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
         return resultList;
     }

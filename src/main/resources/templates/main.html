@@ -160,14 +160,15 @@
 
 <div class="newsist">
 
-    <tr th:each="file,fileStat : ${list}">
+    <tr th:each="book : ${list}">
         <div class="news">
             <h4>
-                <div th:utext="${file.name}">书名</div>
+                <div th:utext="${book.name}">书名</div>
             </h4>
             <p>
-            <th th:utext="${file.content}">相关内容</th>
+            <th th:utext="${book.content}">相关内容</th>
             </p>
+            <a th:href="@{${book.url}}">链接地址</a>
         </div>
 
     </tr>
