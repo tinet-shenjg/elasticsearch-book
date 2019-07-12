@@ -11,4 +11,6 @@
 1. 图书类别检索功能
 2. 图书内容检索  
 搜索界面图：  
-![avatar](https://github.com/tinet-shenjg/elasticsearch-book/blob/master/src/main/resources/static/image/index.png)
+![avatar](https://github.com/tinet-shenjg/elasticsearch-book/blob/master/src/main/resources/static/image/index.png)  
+搜索结果展示界面图：  
+![avatar](https://github.com/tinet-shenjg/elasticsearch-book/blob/master/src/main/resources/static/image/main.png)
