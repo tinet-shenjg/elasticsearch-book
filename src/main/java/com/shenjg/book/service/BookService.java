@@ -13,6 +13,8 @@ import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightField;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,8 @@ public class BookService {
 
     @Autowired
     private RestHighLevelClient restHighLevelClient;
+
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     /**
      * 搜索文档
@@ -109,7 +113,7 @@ public class BookService {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.info("es读取数据发生异常" + e.getMessage(), e);
         }
 
         return resultList;
