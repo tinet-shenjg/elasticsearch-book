@@ -11,6 +11,8 @@
 1. 图书类别检索功能 （待开发）   
 2. 图书内容检索  （已完成）   
 ---
+
+如需体验，请使用[此分支](https://github.com/tinet-shenjg/elasticsearch-book/releases)
 启动前配置：
 1. 安装好Elasticsearch
 2. 添加文档
