@@ -12,7 +12,7 @@
 2. 图书内容检索  （已完成）   
 ---
 
-如需体验，请使用[此分支](https://github.com/tinet-shenjg/elasticsearch-book/releases)
+如需体验，请使用[此分支](https://github.com/tinet-shenjg/elasticsearch-book/tree/relase-1.0.0)    
 启动前配置：
 1. 安装好Elasticsearch
 2. 添加文档
