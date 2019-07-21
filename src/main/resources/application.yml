@@ -24,3 +24,12 @@ spring:
     max-connection-num: 100
     max-connection-per-route: 100
     region: cn-northwest-1 # 当使用AWS ES时，需要配置AWS region
+mybatis :
+#  config-location : classpath:/mybatis-config.xml
+# JWT
+jwt:
+  header: Authorization
+  secret: mySecret
+  #token有效期一天
+  expiration: 8640000
+  tokenHead: "Bearer "

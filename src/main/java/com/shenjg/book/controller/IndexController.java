@@ -4,8 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletResponse;
-
 /**
  * 首页
  *
@@ -15,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class IndexController {
     @RequestMapping("/")
-    public String index(Model model, HttpServletResponse response) {
+    public String index(Model model) {
         model.addAttribute("name", "index");
         return "/index";
     }

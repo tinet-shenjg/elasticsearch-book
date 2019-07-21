@@ -2,6 +2,7 @@ package com.shenjg.book.filter;
 
 import com.shenjg.book.utils.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,11 +33,12 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     /**
      * 存放Token的Header Key
      */
-    public static final String HEADER_STRING = "Authorization";
+    @Value("${jwt.header}")
+    public String HEADER_STRING;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
-        String token = request.getHeader( HEADER_STRING );
+        String token = request.getHeader(HEADER_STRING);
         if (null != token) {
             String username = jwtTokenUtil.getUsernameFromToken(token);
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
