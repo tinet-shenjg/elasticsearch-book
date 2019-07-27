@@ -2,6 +2,8 @@ server:
   port: 9999
 
 spring:
+  aop:
+    auto: true
   application:
     name: elasticsearch-book
   thymeleaf:

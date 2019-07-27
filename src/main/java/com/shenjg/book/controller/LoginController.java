@@ -1,5 +1,6 @@
 package com.shenjg.book.controller;
 
+import com.shenjg.book.annotation.OperationLog;
 import com.shenjg.book.common.ResponseModel;
 import com.shenjg.book.model.LoginModel;
 import com.shenjg.book.service.LoginService;
@@ -38,6 +39,7 @@ public class LoginController {
     }
 
     @GetMapping("/export")
+    @OperationLog(remark = "ceshi")
     public void export(HttpServletResponse response) {
 
 
