@@ -96,7 +96,7 @@
         <dependency>
             <groupId>com.deepoove</groupId>
             <artifactId>poi-tl</artifactId>
-            <version>1.5.0</version>    
+            <version>1.6.0-beta1</version>
         </dependency>
     </dependencies>
 
