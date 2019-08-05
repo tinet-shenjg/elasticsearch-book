@@ -1,41 +1,53 @@
 package com.shenjg.book.controller;
 
 import com.deepoove.poi.XWPFTemplate;
-import org.springframework.util.ResourceUtils;
+import com.shenjg.book.utils.DataTimeUtils;
+import com.shenjg.book.utils.ExportUtils;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Objects;
 
 /**
- * DocxExportController
+ * word文档下载控制器
  *
  * @author shenjg
  * @date 2019/08/01
  */
-@RestController
+@Controller
 @RequestMapping("/docxExport")
 public class DocxExportController {
 
+    /**
+     * 简单的word文档模板替换和下载
+     *
+     * @param response
+     */
     @RequestMapping("title")
     public void title(HttpServletResponse response) {
         XWPFTemplate template = null;
-        String url = "docTemplates"+ File.separator+ "template_title.docx";
+        String url = "docTemplates" + File.separator + "template_title.docx";
         try {
             template = XWPFTemplate.compile(this.getClass().getClassLoader()
                     .getResourceAsStream(url))
                     .render(new HashMap<String, Object>() {{
                         put("title", "Poi-tl 模板引擎");
                     }});
-            OutputStream out = response.getOutputStream();;
+
+            String outFileName = DataTimeUtils.getDataTimeStr() + "-title.docx";
+
+            // 设置响应
+            ExportUtils.setResponse(response, outFileName);
+            OutputStream out = response.getOutputStream();
+
             template.write(out);
             out.flush();
+            out.close();
         } catch (Exception e) {
 
         } finally {

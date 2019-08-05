@@ -1,0 +1,27 @@
+server:
+  port: 9999
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/confluence?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+  # Elasticsearch客户端配置
+  elasticsearch:
+    host: localhost
+    port: 9200
+    scheme: http
+    socket-timout: 30000
+    connection-timeout: 1500
+    read-timeout: 10000
+    connection-request-timout: 500
+    max-connection-num: 100
+    max-connection-per-route: 100
+    region: cn-northwest-1 # 当使用AWS ES时，需要配置AWS region
+# JWT
+jwt:
+  header: Authorization
+  secret: mySecret
+  #token有效期一天
+  expiration: 8640000
+  tokenHead: "Bearer "
