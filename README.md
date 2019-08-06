@@ -9,7 +9,7 @@
 ---
 1. 图书类别检索功能 （待开发）   
 2. 图书内容检索  （已完成） 
-3. 新功能开发[介绍](https://github.com/tinet-shenjg/elasticsearch-book/Feature-job.md)   
+3. 新功能开发[介绍](https://github.com/tinet-shenjg/elasticsearch-book/blob/master/Feature-job.md)   
 ---
 
 如需体验，请使用[此分支](https://github.com/tinet-shenjg/elasticsearch-book/tree/relase-1.0.0)    
