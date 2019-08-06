@@ -20,8 +20,14 @@ public class JobServiceImpl implements JobService {
 
     @Autowired
     private JobMapper jobMapper;
+
     @Override
     public List<JobEntity> list(LimitOffset limitOffset) {
         return jobMapper.selectList(null);
+    }
+
+    @Override
+    public Integer add(JobEntity jobEntity) {
+        return jobMapper.insert(jobEntity);
     }
 }

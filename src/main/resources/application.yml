@@ -9,4 +9,4 @@ spring:
     prefix: classpath:/templates/
 mybatis-plus:
   configuration:
-    map-underscore-to-camel-case: false
+    map-underscore-to-camel-case: true
