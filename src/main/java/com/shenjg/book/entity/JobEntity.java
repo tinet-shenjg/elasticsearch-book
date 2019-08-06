@@ -1,6 +1,7 @@
 package com.shenjg.book.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.shenjg.book.model.JobModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,15 +28,32 @@ public class JobEntity {
 
     private String projectName;
 
-    private Integer areaCode;
+    private String areaCode;
 
     private Date publishTime;
 
     private String publishUser;
 
-    private Integer phone;
+    private Long phone;
 
     private String description;
 
-
+    /**
+     * 转为model
+     *
+     * @return JobModel
+     */
+    public JobModel toJobModel() {
+        JobModel jobModel = JobModel
+                .builder()
+                .id(this.id)
+                .areaCode(this.getAreaCode())
+                .description(this.getDescription())
+                .phone(this.phone)
+                .publishTime(this.publishTime)
+                .projectName(this.projectName)
+                .publishUser(this.publishUser)
+                .build();
+        return jobModel;
+    }
 }

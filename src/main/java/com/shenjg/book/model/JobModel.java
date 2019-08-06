@@ -1,11 +1,11 @@
 package com.shenjg.book.model;
 
+import com.shenjg.book.entity.JobEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -26,15 +26,34 @@ public class JobModel {
 
     private String projectName;
 
-    private Integer areaCode;
+    private String areaCode;
 
     private Date publishTime;
 
     private String publishUser;
 
-    private Integer phone;
+    private Long phone;
 
     private String description;
+
+    /**
+     * 转为数据库实体类
+     *
+     * @return JobEntity
+     */
+    public JobEntity toJobEntity() {
+        JobEntity jobEntity = JobEntity
+                .builder()
+                .id(this.id)
+                .areaCode(this.getAreaCode())
+                .description(this.getDescription())
+                .phone(this.phone)
+                .publishTime(this.publishTime)
+                .projectName(this.projectName)
+                .publishUser(this.publishUser)
+                .build();
+        return jobEntity;
+    }
 
 
 }
