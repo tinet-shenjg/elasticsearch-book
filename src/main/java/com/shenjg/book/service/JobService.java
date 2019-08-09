@@ -27,4 +27,11 @@ public interface JobService {
      * @return
      */
     Integer add(JobEntity jobEntity);
+
+    /**
+     * 删除job信息
+     *
+     * @param id
+     */
+    Integer delete(Integer id);
 }

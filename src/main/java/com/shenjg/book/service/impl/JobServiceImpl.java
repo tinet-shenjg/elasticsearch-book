@@ -32,4 +32,9 @@ public class JobServiceImpl implements JobService {
         jobEntity.setPublishTime(new Date());
         return jobMapper.insert(jobEntity);
     }
+
+    @Override
+    public Integer delete(Integer id) {
+        return jobMapper.deleteById(id);
+    }
 }
