@@ -22,10 +22,11 @@ import java.util.Calendar;
  **/
 @Component
 @Aspect
+
 public class OperationLogAop {
 
     public OperationLogAop() {
-        System.out.println("Aop");
+
     }
 
     /**
