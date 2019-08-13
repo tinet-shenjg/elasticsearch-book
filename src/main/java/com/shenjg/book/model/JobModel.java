@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * JobModel
@@ -28,13 +28,15 @@ public class JobModel {
 
     private String areaCode;
 
-    private Date publishTime;
+    private LocalDateTime publishTime;
 
     private String publishUser;
 
     private Long phone;
 
     private String description;
+
+    private String time;
 
     /**
      * 转为数据库实体类

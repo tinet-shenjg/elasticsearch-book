@@ -25,8 +25,19 @@ public class DataTimeUtils {
      * 获取yyyyMMddHHmmss格式的日期字符串
      */
     public static String getDataTimeStr() {
-
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
         return LocalDateTime.now().format(formatter);
+    }
+
+    /**
+     * 获取yyyyMMddHHmmss格式的日期字符串
+     */
+    public static String getDataTimeStr(LocalDateTime localDateTime) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return localDateTime.format(formatter);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getDataTimeStr(LocalDateTime.now()));
     }
 }

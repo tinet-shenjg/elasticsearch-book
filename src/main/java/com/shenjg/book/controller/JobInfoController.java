@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -36,7 +36,10 @@ public class JobInfoController {
     @GetMapping("/list")
     public ResponseModel list(LimitOffset limitOffset) {
         List<JobEntity> jobEntityList = jobService.list(limitOffset);
-        return new ResponseModel(jobEntityList, HttpStatus.OK);
+        List<JobModel> jobModels = jobEntityList.stream().map(jobEntity -> {
+            return jobEntity.toJobModel();
+        }).collect(Collectors.toList());
+        return new ResponseModel(jobModels, HttpStatus.OK);
     }
 
     /**
@@ -49,7 +52,6 @@ public class JobInfoController {
     @PostMapping()
     public ResponseModel add(@RequestBody JobModel jobModel) {
         JobEntity jobEntity = jobModel.toJobEntity();
-        jobEntity.setPublishTime(new Date());
         Integer id = jobService.add(jobEntity);
         jobModel.setId(id);
         return new ResponseModel(jobModel, HttpStatus.OK);
