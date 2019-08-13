@@ -34,4 +34,12 @@ public interface JobService {
      * @param id
      */
     Integer delete(Integer id);
+
+    /**
+     * 更新job
+     *
+     * @param jobEntity
+     * @return
+     */
+    Integer update(JobEntity jobEntity);
 }

@@ -53,6 +53,14 @@ public class JobInfoController {
         return new ResponseModel(jobModel, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "修改job信息", notes = "不要乱用")
+    @PutMapping()
+    public ResponseModel update(@RequestBody JobModel jobModel) {
+        JobEntity jobEntity = jobModel.toJobEntity();
+        Integer id = jobService.update(jobEntity);
+        return new ResponseModel(jobModel, HttpStatus.OK);
+    }
+
     @ApiOperation(value = "根据id删除job信息", notes = "不要乱用")
     @DeleteMapping("/{id}")
     public ResponseModel delete(Integer id) {

@@ -37,4 +37,9 @@ public class JobServiceImpl implements JobService {
     public Integer delete(Integer id) {
         return jobMapper.deleteById(id);
     }
+
+    @Override
+    public Integer update(JobEntity jobEntity) {
+        return jobMapper.update(jobEntity,null);
+    }
 }
