@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -48,6 +49,7 @@ public class JobInfoController {
     @PostMapping()
     public ResponseModel add(@RequestBody JobModel jobModel) {
         JobEntity jobEntity = jobModel.toJobEntity();
+        jobEntity.setPublishTime(new Date());
         Integer id = jobService.add(jobEntity);
         jobModel.setId(id);
         return new ResponseModel(jobModel, HttpStatus.OK);
