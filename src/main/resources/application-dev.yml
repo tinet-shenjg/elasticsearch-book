@@ -1,5 +1,11 @@
 server:
-  port: 9999
+  port: 443
+  ssl:
+    key-alias: tomcat
+    key-store: server.keystore
+    enabled: true
+    key-store-password: Aa123456
+    key-store-type: JKS
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
