@@ -1,5 +1,5 @@
 server:
-  port: 443
+  port: 9991
   ssl:
     key-alias: tomcat
     key-store: server.keystore
