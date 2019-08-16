@@ -71,4 +71,11 @@ public class JobInfoController {
         Integer deleteId = jobService.delete(id);
         return new ResponseModel(deleteId, HttpStatus.OK);
     }
+
+    @ApiOperation(value = "根据id获取job信息", notes = "不要乱用")
+    @GetMapping("/{id}")
+    public ResponseModel get(@PathVariable Integer id) {
+        JobModel jobModel = jobService.get(id);
+        return new ResponseModel(jobModel, HttpStatus.OK);
+    }
 }
