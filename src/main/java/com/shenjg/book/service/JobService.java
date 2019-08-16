@@ -2,6 +2,7 @@ package com.shenjg.book.service;
 
 import com.shenjg.book.common.LimitOffset;
 import com.shenjg.book.entity.JobEntity;
+import com.shenjg.book.model.JobModel;
 
 import java.util.List;
 
@@ -42,4 +43,6 @@ public interface JobService {
      * @return
      */
     Integer update(JobEntity jobEntity);
+
+    JobModel get(Integer id);
 }
