@@ -22,4 +22,23 @@ public class AdminUser {
     private String username;
 
     private String password;
+    /**
+     * 手机号
+     */
+    private Long phone;
+
+    /**
+     * 邮箱
+     */
+    private String email;
+
+    /**
+     * 昵称
+     */
+    private String nickname;
+
+    /**
+     * 组织id
+     */
+    private Integer organizationId;
 }
