@@ -15,7 +15,7 @@ import java.util.List;
  * @date 2019/07/31
  */
 @Service
-public class AdminUserServiceImpl implements AdminUserService {
+public class AdminUserServiceImpl implements AdminUserService   {
 
     @Autowired
     private AdminUserMapper adminUserMapper;
@@ -27,5 +27,10 @@ public class AdminUserServiceImpl implements AdminUserService {
     @Override
     public Integer add(AdminUser adminUser) {
         return adminUserMapper.insert(adminUser);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        adminUserMapper.deleteById(id);
     }
 }
