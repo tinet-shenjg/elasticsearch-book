@@ -20,4 +20,6 @@ public interface AdminUserService {
     List<AdminUser> list();
 
     Integer add(AdminUser adminUser);
+
+    void delete(Integer id);
 }
