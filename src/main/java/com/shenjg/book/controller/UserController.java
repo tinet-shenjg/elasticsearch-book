@@ -29,6 +29,7 @@ public class UserController {
         List<AdminUser> adminUsers = adminUserService.list();
         return new ResponseModel(HttpStatus.OK);
     }
+
     @ApiOperation(value = "新增用户信息", notes = "不要乱用")
     @PostMapping
     public ResponseModel add(@RequestBody AdminUserModel adminUserModel){
@@ -36,5 +37,12 @@ public class UserController {
         adminUserService.add(adminUser);
         adminUserModel.setId(adminUser.getId());
         return new ResponseModel(adminUserModel, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "删除用户信息", notes = "不要乱用")
+    @PostMapping("/{id}")
+    public ResponseModel delete(@PathVariable Integer id){
+        adminUserService.delete(id);
+        return new ResponseModel(id, HttpStatus.OK);
     }
 }
