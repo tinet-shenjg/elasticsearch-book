@@ -40,7 +40,7 @@ public class UserController {
     }
 
     @ApiOperation(value = "删除用户信息", notes = "不要乱用")
-    @PostMapping("/{id}")
+    @DeleteMapping("/{id}")
     public ResponseModel delete(@PathVariable Integer id){
         adminUserService.delete(id);
         return new ResponseModel(id, HttpStatus.OK);

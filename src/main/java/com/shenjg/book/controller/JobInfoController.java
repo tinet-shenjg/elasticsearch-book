@@ -67,7 +67,7 @@ public class JobInfoController {
 
     @ApiOperation(value = "根据id删除job信息", notes = "不要乱用")
     @DeleteMapping("/{id}")
-    public ResponseModel delete(Integer id) {
+    public ResponseModel delete(@PathVariable Integer id) {
         Integer deleteId = jobService.delete(id);
         return new ResponseModel(deleteId, HttpStatus.OK);
     }
