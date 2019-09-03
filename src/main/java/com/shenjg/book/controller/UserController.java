@@ -2,12 +2,12 @@ package com.shenjg.book.controller;
 
 import com.shenjg.book.common.ResponseModel;
 import com.shenjg.book.entity.AdminUser;
+import com.shenjg.book.model.AdminUserModel;
 import com.shenjg.book.service.AdminUserService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,6 +28,21 @@ public class UserController {
     public ResponseModel list(){
         List<AdminUser> adminUsers = adminUserService.list();
         return new ResponseModel(HttpStatus.OK);
+    }
 
+    @ApiOperation(value = "新增用户信息", notes = "不要乱用")
+    @PostMapping
+    public ResponseModel add(@RequestBody AdminUserModel adminUserModel){
+        AdminUser adminUser = adminUserModel.toAdminUser();
+        adminUserService.add(adminUser);
+        adminUserModel.setId(adminUser.getId());
+        return new ResponseModel(adminUserModel, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "删除用户信息", notes = "不要乱用")
+    @DeleteMapping("/{id}")
+    public ResponseModel delete(@PathVariable Integer id){
+        adminUserService.delete(id);
+        return new ResponseModel(id, HttpStatus.OK);
     }
 }

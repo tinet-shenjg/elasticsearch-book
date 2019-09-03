@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -35,7 +36,10 @@ public class JobInfoController {
     @GetMapping("/list")
     public ResponseModel list(LimitOffset limitOffset) {
         List<JobEntity> jobEntityList = jobService.list(limitOffset);
-        return new ResponseModel(jobEntityList, HttpStatus.OK);
+        List<JobModel> jobModels = jobEntityList.stream().map(jobEntity -> {
+            return jobEntity.toJobModel();
+        }).collect(Collectors.toList());
+        return new ResponseModel(jobModels, HttpStatus.OK);
     }
 
     /**
@@ -53,10 +57,25 @@ public class JobInfoController {
         return new ResponseModel(jobModel, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "修改job信息", notes = "不要乱用")
+    @PutMapping()
+    public ResponseModel update(@RequestBody JobModel jobModel) {
+        JobEntity jobEntity = jobModel.toJobEntity();
+        Integer id = jobService.update(jobEntity);
+        return new ResponseModel(jobModel, HttpStatus.OK);
+    }
+
     @ApiOperation(value = "根据id删除job信息", notes = "不要乱用")
     @DeleteMapping("/{id}")
-    public ResponseModel delete(Integer id) {
+    public ResponseModel delete(@PathVariable Integer id) {
         Integer deleteId = jobService.delete(id);
         return new ResponseModel(deleteId, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "根据id获取job信息", notes = "不要乱用")
+    @GetMapping("/{id}")
+    public ResponseModel get(@PathVariable Integer id) {
+        JobModel jobModel = jobService.get(id);
+        return new ResponseModel(jobModel, HttpStatus.OK);
     }
 }

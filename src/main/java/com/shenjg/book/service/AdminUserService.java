@@ -18,4 +18,8 @@ public interface AdminUserService {
      * @return
      */
     List<AdminUser> list();
+
+    Integer add(AdminUser adminUser);
+
+    void delete(Integer id);
 }

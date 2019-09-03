@@ -1,5 +1,6 @@
-package com.shenjg.book.entity;
+package com.shenjg.book.model;
 
+import com.shenjg.book.entity.AdminUser;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,13 +16,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AdminUser {
+public class AdminUserModel {
 
     private Integer id;
 
     private String username;
 
     private String password;
+
     /**
      * 手机号
      */
@@ -41,4 +43,16 @@ public class AdminUser {
      * 组织id
      */
     private Integer organizationId;
+
+    public AdminUser toAdminUser(){
+        return AdminUser.builder()
+                .id(id)
+                .password(this.password)
+                .username(this.username)
+                .phone(this.phone)
+                .email(this.email)
+                .nickname(this.nickname)
+                .organizationId(this.organizationId)
+                .build();
+    }
 }

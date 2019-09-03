@@ -3,11 +3,12 @@ package com.shenjg.book.service.impl;
 import com.shenjg.book.common.LimitOffset;
 import com.shenjg.book.entity.JobEntity;
 import com.shenjg.book.mapper.JobMapper;
+import com.shenjg.book.model.JobModel;
 import com.shenjg.book.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -29,12 +30,24 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public Integer add(JobEntity jobEntity) {
-        jobEntity.setPublishTime(new Date());
+        LocalDateTime localDateTime = LocalDateTime.now();
+        jobEntity.setPublishTime(localDateTime);
         return jobMapper.insert(jobEntity);
     }
 
     @Override
     public Integer delete(Integer id) {
         return jobMapper.deleteById(id);
+    }
+
+    @Override
+    public Integer update(JobEntity jobEntity) {
+        return jobMapper.update(jobEntity,null);
+    }
+
+    @Override
+    public JobModel get(Integer id) {
+        JobEntity jobEntity = jobMapper.selectById(id);
+        return jobEntity.toJobModel();
     }
 }
